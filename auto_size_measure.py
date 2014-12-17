@@ -27,8 +27,8 @@ import pywcsgrid2
 import pywcs
 from mpl_toolkits.axes_grid1.axes_divider import make_axes_locatable
 #using locally downloaded gaussfit code from Adam Ginsberg
-from gaussfit import mpfit
-from gaussfit import gaussfitter as g
+import mpfit
+import gaussfitter as g
 from matplotlib.patches import Ellipse
 
 all=False
@@ -786,11 +786,10 @@ def plot_figure(f,skip,total_jet_length,linear_size,rms):
     
   ##add beam size
   #(major,minor)=5.4",5.4", angle=0.0
-  if vla==False:
-    ax.add_beam_size(0.0015/0.0005,0.0015/0.0005,0.0,loc=3,patch_props={'facecolor':'None','edgecolor':'k'}) #beam size in deg / axis coord increment from fits header. 'hatch':'////'
+  ax.add_beam_size(0.0015/0.0005,0.0015/0.0005,0.0,loc=3,patch_props={'facecolor':'None','edgecolor':'k'}) #beam size in deg / axis coord increment from fits header. 'hatch':'////'
   
-  #Figure title
-  ax.add_inner_title(name,loc=2)
+  # #Figure title
+  # ax.add_inner_title(name,loc=2)
   
   ## set axes labels
   ## cax.set_ylabel('mJy/Beam',fontdict={'fontname':'Bitstream Vera Sans','fontsize':11},labelpad=0)
@@ -870,6 +869,8 @@ for row in lines:
   
   #get peak positions and values in image (will be narrowed down to hotspots later on)
   peaks,img,f=find_peaks(file)
+
+  fitshead=f[0].header
 
   #center coords (either optical or radio)
   if optID==True:

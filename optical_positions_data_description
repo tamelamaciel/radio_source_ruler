@@ -1,0 +1,98 @@
+#optical_positions description of data
+#as read in, the catalog has the following columns of data:
+#[0]   = Catalog ID (3C... or C1-134...)
+#[1]   = Sample number, if in CoNFIG (1-4)
+#[2]   = Name 
+#[3]   = 3CRR note
+#[4]   = RAJ2000 for NVSS radio position. For sources with several NVSS components, the coordinates correspond to one of the components. 
+#[5]   = - 
+#[6]   = - 
+#[7]   = DEJ2000 for NVSS radio position. For sources with several NVSS components, the coordinates correspond to one of the components. 
+#[8]   = - 
+#[9]   = - 
+#[10]  = Redshift 
+#[11]  = Error Z 
+#[12]  = source of z (in order of priority given). S9-SDSS DR9 spectroscopic redshift (if zwarning=0). W-redshift from Willott for most 3CRR sources, hopefully spectroscopic. should check up on this. S-spectroscopic redshift from DR7 or SIMBAD (for other sources outside redshift range). P9-SDSS DR9 photoz photometric redshift (if errors on this value are good and if 0.01<z<0.3). P-SDSS photoz2 photometric redshift (for other sources outside redshift range). K-2MASS Ks-z estimate. I-SDSS i-z estimate. Z-SDSS z-z estimate. R-SDSS r-z estimate. G-SDSS g-z estimate. Spectroscopic redshifts are retrieved from SDSS DR9 or SDSS DR7 / SIMBAD database. Photometric redshifts are obtained from the SDSS DR9 photoz catalogue, or the SDSS DR7 photoz2 catalogue, or estimated using either the SDSS mag–z relation or the KS–z relation. 
+#[13]  = Alpha (from CoNFIG or Willott for 3CRR sources)
+#[14]  = SDSS DR9 spectral class (STAR,GALAXY,QSO) and subclass (STARFORMING,AGN,BROADLINE,STARBURST)
+#[15]  = Morph_Type (CoNFIG)
+#[16]  = Morph_Type from Willott (for 3CRR sources only)
+#[17]  = notes on the morph type (from CoNFIG. includes t if CoNFIG morph updated by Tamela) 
+#[18]  = uncertainty in the morph type (from CoNFIG)
+#[19]  = Class_willott (for 3CRR sources only)
+#[20]  = Ref_willott (for 3CRR sources only) 
+#[21]  = S_1.4/Jy #need to get Willott 178 flux and convert to 1.4 using spectral index. Instead of LRL spectral index
+#[22]  = L_1.4/W/Hz/sr
+#[23]  = k-corrected L_1.4/W/Hz/sr
+#[24]  = manual LAS/arcsec. Includes 3C measures from Willott, manual CoNFIG measures, including manual C and U measures if they exist. '-' if source is compact and not manually measured.
+#[25]  = error on manual size measure/arcsec
+#[26]  = map used to measure manual LAS (FIRST, NVSS, VLA A, eMERLIN, archive, Willott). not accurate for FIRST vs NVSS
+#[27]  = automated LAS/arcsec (from auto_size_measure.py)
+#[28]  = error on automated size measure/arcsec
+#[29]  = deconvolved gaussian beam major axis (from FIRST archive)/arcsec
+#[30]  = error on deconvolved size measure/arcsec. using FIRST catalog definition for deconvolved size uncertainty: Sigma(Size) = 10 arcsec (1/SNR + 1/75), where SNR = (Fpeak-0.25) / Rms
+#[31]  = Manual Linear size/kpc (using H0 = 71 km/s/Mpc, omega_matter=0.27 and omega_lambda=0.73). Includes manual and deconvolved angular size measures
+#[32]  = error on linear size/kpc
+#[33]  = Auto Linear size/kpc (using H0 = 71 km/s/Mpc, omega_matter=0.27 and omega_lambda=0.73)
+#[34]  = error on auto linear size/kpc
+#[35]  = RAO optical counterpart 
+#[36]  = - 
+#[37]  = - 
+#[38]  = DEO optical counterpart
+#[39]  = - 
+#[40]  = - 
+#[41]  = optical_note: 'o' denotes sources for which the identification was found in another catalog than SDSS or 2MASS. 
+#[42]  = umag, just for CoNFIG although 3CRR definitive cat does have r, R, B, V mags from LRL.
+#[43]  = gmag, just for CoNFIG although 3CRR definitive cat does have r, R, B, V mags from LRL.
+#[44]  = rmag, just for CoNFIG although 3CRR definitive cat does have r, R, B, V mags from LRL.
+#[45]  = k-corrected rmag, only for sources with z<=0.5. script doesn't work well for larger z
+#[46]  = k-corrected r-luminosity, only for sources with z<=0.5. in W/Hz/steradian
+#[47]  = imag 
+#[48]  = zmag 
+#[49]  = k-corrected zmag, only for sources with z<=0.5
+#[50]  = k-corrected z-luminosity, only for sources with z<=0.5. in W/Hz/steradian
+#[51]  = Ksmag, 2MASS Ks magnitude. 
+#[52]  = n_Ksmag, Note e denotes sources from the 2MASS extended catalog
+#[53]  = V_mag_willott
+#[54]  = umag_DR9, just for local CONFIG sources (z<=0.5), from SDSS DR9 modelMag - extinction 
+#[55]  = gmag_DR9, just for local CONFIG sources (z<=0.5), from SDSS DR9 modelMag - extinction 
+#[56]  = rmag_DR9, just for local CONFIG sources (z<=0.5), from SDSS DR9 modelMag - extinction 
+#[57]  = k-corrected r-luminosity from DR9 mag, W/Hz/sr using online K correction calculator
+#[58]  = imag_DR9, just for local CONFIG sources (z<=0.5), from SDSS DR9 modelMag - extinction 
+#[59]  = zmag_DR9, just for local CONFIG sources (z<=0.5), from SDSS DR9 modelMag - extinction 
+#[60]  = k-corrected z-luminosity from DR9 mag, W/Hz/sr using online K correction calculator
+#[61]  = OII_372.7nm height for local CONFIG sources. From local_env_sources.dat. (10^-17 erg/cm^2/s/Angst)
+#[62]  = OII_372.7nm ew (Angstrom) for local CONFIG sources. From local_env_sources.dat
+#[63]  = OIII_496.0nm height for local CONFIG sources. From local_env_sources.dat. (10^-17 erg/cm^2/s/Angst)
+#[64]  = OIII_496.0nm ew (Angstrom) for local CONFIG sources. From local_env_sources.dat
+#[65]  = OIII_500.8nm height for local CONFIG sources. From local_env_sources.dat. (10^-17 erg/cm^2/s/Angst)
+#[66]  = OIII_500.8nm ew (Angstrom) for local CONFIG sources. From local_env_sources.dat
+#[67]  = OII_3726_flux SDSS DR9 line flux from GalSpecLine for local CONFIG sources (0.01<z<0.3) (10^-17 erg/cm^2/s)
+#[68]  = OII_3726_flux_err SDSS DR9 line flux error from GalSpecLine for local CONFIG sources (0.01<z<0.3) (10^-17 erg/cm^2/s)
+#[69]  = OII_3726_eqw SDSS DR9 equivalent width from GalSpecLine for local CONFIG sources (0.01<z<0.3) (Angstroms)
+#[70]  = OII_3726_eqw_err SDSS DR9 equivalent width error from GalSpecLine for local CONFIG sources (0.01<z<0.3) (Angstroms)
+#[71]  = OIII_4959_flux SDSS DR9 line flux from GalSpecLine for local CONFIG sources (0.01<z<0.3) (10^-17 erg/cm^2/s)
+#[72]  = OIII_4959_flux_err SDSS DR9 line flux error from GalSpecLine for local CONFIG sources (0.01<z<0.3) (10^-17 erg/cm^2/s)
+#[73]  = OIII_4959_eqw SDSS DR9 equivalent width from GalSpecLine for local CONFIG sources (0.01<z<0.3) (Angstroms)
+#[74]  = OIII_4959_eqw_err SDSS DR9 equivalent width error from GalSpecLine for local CONFIG sources (0.01<z<0.3) (Angstroms)
+#[75]  = OIII_5007_flux SDSS DR9 line flux from GalSpecLine for local CONFIG sources (0.01<z<0.3) (10^-17 erg/cm^2/s)
+#[76]  = OIII_5007_flux_err SDSS DR9 line flux error from GalSpecLine for local CONFIG sources (0.01<z<0.3) (10^-17 erg/cm^2/s)
+#[77]  = OIII_5007_eqw SDSS DR9 equivalent width from GalSpecLine for local CONFIG sources (0.01<z<0.3) (Angstroms)
+#[78]  = OIII_5007_eqw_err SDSS DR9 equivalent width error from GalSpecLine for local CONFIG sources (0.01<z<0.3) (Angstroms)
+#[79]  = L_OII_willott/W
+#[80]  = ref_willott
+#[81]  = L_OIII_willott/W
+#[82]  = ref_willott
+#[83]  = OIII/OII line ratio. not really using local source data, but just DR9 when available. The following note is old but doesn't correspond exactly to what the conversion to MASTER catalog.py script does: 'Uses DR9 data if available otherwise CoNFIG. Uses OIII_5008/OII first, then OIII_496/OII. Only calculated for sources with nonzero,postive fluxes. For 3C sources, uses DR9 data if available, otherwise uses willott OIII/OII ratio, unless it overlaps with CoNFIG in which case the CoNFIG line ratio is used'
+#[84]  = HEG/LEG (from SDSS lineID=4960 or 5008 + OII line 3727 -  ew[OIII]<1nm and [Oii]/[OIII]>1 - OII stronger = LEG) --> H=HEG, L=LEG #used to have typo. corrected to: ew[OIII]<1nm -> LEG
+#[85]  = Gendre richness factor from Gendre 2013
+#[86]  = N1_19, old 2D count of SDSS DR9 galaxies (photo classified) within 1Mpc circle, Mr<-19.0, with photoz redshifts 0.01<z<0.3
+#[87]  = NB_19, old 2D background count of DR9 galaxies (photo classified) between 2.7-3Mpc, Mr<-19.0, with photoz redshifts 0.01<z<0.3, scaled by ratio of areas
+#[88]  = SDSSDR9 old 2D richness factor from count_richness.py script, presumably with same method as Gendre 13 and Wing 11. =N1_19-NB_19
+#[89]  = SDSSDR9 3D richness factor from count_3Drichness.py script, using deltaz ~ +/-0.05
+#[90]  = first_rms/Jy/bm (from FIRST archive)
+#[91]  = calc_rms/Jy/beam (from rms_fits.py)
+#[92]  = SDSS DR9 Object ID, SDSS DR9 unique object identifier (search radius 3 arcsec to optical ID)
+#[93]  = SDSS DR9 SpecObjID if available (search radius 3 arcsec to optical ID)
+#
+#

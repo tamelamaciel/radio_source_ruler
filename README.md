@@ -6,6 +6,8 @@ By Tamela Maciel, 2014
 
 An image analysis tool to automatically measure jets and lobes of radio galaxy images.
 
+![alt text](https://raw.githubusercontent.com/tamelamaciel/radio_source_ruler/master/thumbnail.png "radio source ruler thumbnail")
+
 
 **Python libraries:**
 
@@ -19,7 +21,9 @@ Matplotlib
 
 **Key results:**
 
-![alt text](https://raw.githubusercontent.com/tamelamaciel/Coursera_Capstone/master/Toronto%20neighbourhood%20clusters.png "Toronto cluster map")
+![alt text](https://raw.githubusercontent.com/tamelamaciel/radio_source_ruler/master/gallery.png "radio source gallery")
+
+![alt text](https://raw.githubusercontent.com/tamelamaciel/radio_source_ruler/master/automated_vs_manual_size_comparison.png "accuracy of radio source ruler")
 
 **How to run:**
 

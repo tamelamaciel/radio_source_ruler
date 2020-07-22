@@ -35,16 +35,19 @@ all=False
 startwith=False
 plot=False
 if sys.argv[-1] == 'auto_size_measure.py':
-  print '--------------------------------------------------------'
-  print 'Auto Size Measure'
-  print '--------------------------------------------------------'
-  print 'Usage: object name, object name: to start from given source,'
-  print 'or if \'all\', processes all sources in upload_file.'
-  print 'Append p to create and save plots.'
-  print 'ie: \'3C334 p\' or \'3C253:\' or \'all\''
-  print '--------------------------------------------------------'
+  print('--------------------------------------------------------')
+  print('Auto Size Measure')
+  print('--------------------------------------------------------')
+  print('Usage:')
+  print('\'object name\' to process one galaxy,')
+  print('\'object name:\' to start from given source,')
+  print('\'all\' to process all sources in upload_file.')
+  print('Add \'p\' to create and save plots.')
+  print('ie: \'3C334 p\' or \'3C253:\' or \'all\'')
+  print('--------------------------------------------------------')
   Input = string.split(raw_input('Input: '))
-  print '--------------------------------------------------------'
+  print('--------------------------------------------------------')
+
   if len(Input)>1: 
     plot=True
   if Input[0]=='all':

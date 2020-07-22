@@ -1,4 +1,4 @@
-#optical_positions README
+#optical_positions description of data
 #as read in, the catalog has the following columns of data:
 #[0]   = Catalog ID (3C... or C1-134...)
 #[1]   = Sample number, if in CoNFIG (1-4)

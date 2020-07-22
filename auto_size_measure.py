@@ -115,7 +115,7 @@ def get_data(line):
   try: 
     las=float(items[24]) 
     if man_morph in ['U','C','C*','S','S*']:
-      print name+': check! las measure in catalog'
+      print(name+': check! las measure in catalog')
       las=str(las)+'*'
   except ValueError:
     try:
@@ -123,7 +123,7 @@ def get_data(line):
     except ValueError:
       las=items[24] #for sources that have no size information at all
       manual_size=False
-      print name+': check! has no size info at all?'
+      print(name+': check! has no size info at all?')
 
   rms=float(items[91])/1000 #calculated rms from FITS file, using rms_fits.py script.
 
@@ -197,7 +197,7 @@ def get_contours1(img,rms):
   skip=False
   #if ratio of maxpix to noise is small (less than 40 ish)
   if maxpix/rms<300.:
-    print name+' has small ratio of maxpix to noise'
+    print(name+' has small ratio of maxpix to noise')
     l=np.logspace(math.log(rms*3,2),math.log(maxpix,2),num=6,base=2.0) #log base 2 contour levels, starting at 5*rms value
   else:
     l=np.logspace(math.log(rms*5,2),math.log(maxpix,2),num=6,base=2.0) #log base 2 contour levels, starting at 5*rms value
@@ -250,7 +250,7 @@ def sepn(r1,d1,r2,d2):
 ### 7. FUNCTION TO FIND HOTSPOTS ###
 def find_hotspots(R,D,optID,peaks,rms):
   if not isinstance(R,float):
-    print 'RA DEC not defined'
+    print('RA DEC not defined')
     return
 
   wcs=pywcs.WCS(fitshead,naxis=2)
@@ -343,7 +343,7 @@ def find_hotspots(R,D,optID,peaks,rms):
 ### FUNCTION TO CONVERT COMPACT FWHM to ANGULAR SIZE
 def gauss_to_angsize(majorax,R,D,optID):
   if not isinstance(R,float):
-    print 'RA DEC not defined'
+    print('RA DEC not defined')
     return
   wcs=pywcs.WCS(f[0].header,naxis=2)
   #convert opt_degRA and opt_degDEC from WC to pixel
@@ -372,7 +372,7 @@ def gauss_to_angsize(majorax,R,D,optID):
 ### 8. FUNCTION TO FIND LENGTH OF JETS ###
 def find_dist(goodcontour,R,D,optID):
   if not isinstance(R,float):
-    print 'RA DEC not defined'
+    print('RA DEC not defined')
     return
   wcs=pywcs.WCS(f[0].header,naxis=2)
   #convert opt_degRA and opt_degDEC from WC to pixel
@@ -657,7 +657,7 @@ def calc_size(z,total_jet_length):
     linear_size = total_jet_length*kpc_DA               #linear size conversion from arcsec to kpc
   except ValueError:
     #no redshift measured
-    print 'No redshift available'
+    print('No redshift available')
     linear_size='-'     
   return linear_size 
 #################################################################    
@@ -831,8 +831,8 @@ exceptions=['3C230']
 
 lines=upload_file.readlines()
 upload_file.close()
-print '----------------------------------------------------'
-print '----------------------------------------------------'
+print('----------------------------------------------------')
+print('----------------------------------------------------')
 ### need to read in data from definitive_CONFIG for just one source if all=False
 if all==False:
   for i, s in enumerate(lines):
@@ -893,7 +893,7 @@ for row in lines:
       goodcontour=isgood_contour(contour,goodcontour,rms)
     #check for lots of spurious flux that may need cleaning. rerun contours
     if len(goodcontour)>6:
-      print 'Might have lots of spurious flux'
+      print('Might have lots of spurious flux')
       check_contours='c'
       new_rms=rms*2
       contours1,skip,cl=get_contours1(img,new_rms)
@@ -903,7 +903,7 @@ for row in lines:
            
     if man_morph in ['C','C*','S','S*']:
       compact=True
-      print name+': compact. fitting gaussian' 
+      print(name+': compact. fitting gaussian')
       height,amp,cx,cy,widthx,widthy,rot,gaussdata=compact_fit()
 
       fwhmx=2.*math.sqrt(2.*math.log(2.))*widthx
@@ -932,10 +932,10 @@ for row in lines:
         failfile = open('fail_list_auto_sizes.dat', 'a')
         failfile.write(failline)
         failfile.close()
-        print '----------------------------------------------------'
-        print '----------------------------------------------------'
-        print name+': could not find hotspots. adding to fail list'
-        print '----------------------------------------------------' 
+        print('----------------------------------------------------')
+        print('----------------------------------------------------')
+        print(name+': could not find hotspots. adding to fail list')
+        print('----------------------------------------------------') 
         total_jet_length='-'
         linear_size='-'
         HS1_arm1_ratio='-'
@@ -982,15 +982,15 @@ for row in lines:
         failfile = open('fail_list_auto_sizes.dat', 'a')
         failfile.write(failline)
         failfile.close()
-        print '----------------------------------------------------'
-        print '----------------------------------------------------'
-        print name+': angle between two longest arms is < 90 degrees'
-        print '----------------------------------------------------' 
+        print('----------------------------------------------------')
+        print('----------------------------------------------------')
+        print(name+': angle between two longest arms is < 90 degrees')
+        print('----------------------------------------------------')
       
 
   ### otherwise don't calc total jet length ###
   else:
-    print name+': not calculating jet length. source is an exception'   
+    print(name+': not calculating jet length. source is an exception')  
     total_jet_length='-'
     linear_size='-'
     HS1_arm1_ratio='-'
@@ -1023,13 +1023,13 @@ for row in lines:
     f.close()
     
   #print progress in terminal
-  print 'Name: '+name
-  print 'Total jet length: '+str(total_jet_length)+' arcsec, '+str(linear_size)+' kpc'
-  print 'Hotspot lobe ratio: Lobe 1: '+str(HS1_arm1_ratio)+', Lobe 2: '+str(HS2_arm2_ratio)
-  print 'Morphology: Manual: '+man_morph+', Auto: '+auto_morph
-  if optID==False: print 'No available optical ID, using radio ID'
-  if plot==True: print 'Plotted and saved in /autosize_images/'
-  print '----------------------------------------------------'
-  print '----------------------------------------------------'
+  print('Name: '+name)
+  print('Total jet length: '+str(total_jet_length)+' arcsec, '+str(linear_size)+' kpc')
+  print('Hotspot lobe ratio: Lobe 1: '+str(HS1_arm1_ratio)+', Lobe 2: '+str(HS2_arm2_ratio))
+  print('Morphology: Manual: '+man_morph+', Auto: '+auto_morph)
+  if optID==False: print('No available optical ID, using radio ID')
+  if plot==True: print('Plotted and saved in /autosize_images/')
+  print('----------------------------------------------------')
+  print('----------------------------------------------------')
     
 ### END OF PROGRAM ###

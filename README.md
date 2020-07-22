@@ -78,6 +78,21 @@ Finally, so-called 'head-tail' or 'bent double' sources with less than 90 degree
 
 **How to run:**
 
-python auto_size_measure.py
+This script expects radio galaxy FITS files (stored in /FITS_files/), and a database of optical ID positions (stored in 'optical_positions.dat'). 
 
-This script expects radio galaxy FITS files (/FITS_files/), and a database of optical ID positions ('optical_positions.dat').  
+```python auto_size_measure.py```
+ 
+ The code will prompt the user for input, determining whether to process an individual galaxy, or to start from a given galaxy and work through the remaining files, or to process all galaxies at once.
+
+```
+Auto Size Measure
+--------------------------------------------------------
+Usage: 
+'object name' to process one galaxy,
+'object name:' to start from given galaxy and work down,
+'all' to process all sources in upload_file.
+Add 'p' to create and save plots.
+ie: '3C334 p' or '3C253:' or 'all'
+--------------------------------------------------------
+Input: 
+--------------------------------------------------------```
